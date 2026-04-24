@@ -19,7 +19,7 @@ public class Shoot : MonoBehaviour
                 if(hit.collider.CompareTag("Target"))
                 {
                     hit.collider.GetComponent<Renderer>().material.color = Color.yellow;
-                    //Destroy(hit.collider.gameObject);
+                    //Destroy(hit.collider.gameObject); //oyundan silme kodu
                 }
             }
         }
@@ -37,5 +37,7 @@ public class Shoot : MonoBehaviour
         Gizmos.color = Color.red;
         Vector3 direction = transform.TransformDirection(Vector3.forward) * rayDistance; // kameranın baktığı yönde bir vektör oluşturuyoruz
         Gizmos.DrawRay(transform.position, direction); // ışını görselleştiriyoruz, böylece nereden nereye gittiğini görebiliriz
+
+        //drawsphere ile ışının çarptığı noktayı görselleştirebiliriz BUNU ARAŞTIRMAK GEREKİR
     }
 }
