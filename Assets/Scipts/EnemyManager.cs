@@ -12,7 +12,8 @@ public class EnemyManager : MonoBehaviour
         //Instantiate(enemyPrefab, new Vector3(0, 0.97f, 0), Quaternion.identity); // Quaternion.identity, objenin rotasyonunu sıfırlar, yani objenin kendi eksenlerine göre döndürülmemiş bir şekilde oluşturulmasını sağlar
         //Instantiate(enemyPrefab, new Vector3(2,3, 0), Quaternion.identity);
 
-        StartCoroutine(enumerator());
+        //StartCoroutine(enumerator());
+        StartCoroutine(IESpawnEnemyDelay());
     }
 
     private void Update()
@@ -37,12 +38,29 @@ public class EnemyManager : MonoBehaviour
             Instantiate(enemyPrefab, transform.position, transform.rotation);
         }
     }
-    IEnumerator enumerator()
+    //IEnumerator enumerator()
+    //{
+    //    Debug.Log("Başladı");
+
+    //    yield return new WaitForSeconds(3);
+
+    //    Debug.Log("Bitti");
+    //}
+
+    IEnumerator IESpawnEnemyDelay()
     {
-        Debug.Log("Başladı");
+        while (true) 
+        {
+            SpawnEnemy();
+            yield return new WaitForSeconds(1f); // her 1 saniyede bir düşman oluşturur
+            
+        }
+          
+    }
 
-        yield return new WaitForSeconds(3);
-
-        Debug.Log("Bitti");
+    private void SpawnEnemy()
+    {
+        Vector3 randomPosition = new Vector3(Random.Range(-5f, 5f), 0.97f, Random.Range(-5f, 5f)); // random olarak karakter olışturulacak pozisyonu belirler
+        Instantiate(enemyPrefab, randomPosition, Quaternion.identity);
     }
 }
