@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
@@ -10,6 +11,8 @@ public class EnemyManager : MonoBehaviour
         //Instantiate(enemyPrefab, new Vector3(5, 20, 4), transform.rotation); // transform.rotation, objenin rotasyonunu, EnemyManager objesinin rotasyonuna göre oluşturur, yani EnemyManager objesi döndürülmüşse, oluşturulan objede aynı şekilde döndürülür
         //Instantiate(enemyPrefab, new Vector3(0, 0.97f, 0), Quaternion.identity); // Quaternion.identity, objenin rotasyonunu sıfırlar, yani objenin kendi eksenlerine göre döndürülmemiş bir şekilde oluşturulmasını sağlar
         //Instantiate(enemyPrefab, new Vector3(2,3, 0), Quaternion.identity);
+
+        StartCoroutine(enumerator());
     }
 
     private void Update()
@@ -25,7 +28,6 @@ public class EnemyManager : MonoBehaviour
                 // bu yüzden çok fazla düşman oluşabilir ve performans sorunlarına yol açabilir,
                 // bu yüzden bu kodu dikkatli kullanmak gerekir
                 Destroy(enemy, 3);//enemy 3 saniye sonra silindi
-
             }
         }
 
@@ -34,5 +36,13 @@ public class EnemyManager : MonoBehaviour
         {
             Instantiate(enemyPrefab, transform.position, transform.rotation);
         }
+    }
+    IEnumerator enumerator()
+    {
+        Debug.Log("Başladı");
+
+        yield return new WaitForSeconds(3);
+
+        Debug.Log("Bitti");
     }
 }
