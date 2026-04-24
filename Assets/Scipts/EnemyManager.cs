@@ -52,8 +52,7 @@ public class EnemyManager : MonoBehaviour
         while (true) 
         {
             SpawnEnemy();
-            yield return new WaitForSeconds(1f); // her 1 saniyede bir düşman oluşturur
-            
+            yield return new WaitForSeconds(1f); // her 1 saniyede bir düşman oluşturur    
         }
           
     }
