@@ -32,7 +32,6 @@ public class EnemyManager : MonoBehaviour
             }
         }
 
-
         if (Input.GetKeyDown(KeyCode.A))
         {
             Instantiate(enemyPrefab, transform.position, transform.rotation);

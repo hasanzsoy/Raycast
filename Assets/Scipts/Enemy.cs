@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour
             }
             Debug.Log("Yeni Dalga Başlıyor");
             yield return new WaitForSeconds(5f);
+            
         }
     }
 
@@ -28,6 +29,7 @@ public class Enemy : MonoBehaviour
     {
         Vector3 randomPosition = new Vector3(Random.Range(-5f, 5f),0.97f,Random.Range(-5f, 5f));
         Instantiate(enemyPrefab, randomPosition, Quaternion.identity);
+        
     }
 }
 
